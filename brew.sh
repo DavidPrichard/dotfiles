@@ -48,6 +48,7 @@ brew install nmap
 brew install tcpflow tcpreplay tcptrace
 brew cask install wireshark-chmodbpf
 brew install wireshark --with-qt5
+brew install wifi-password # "what's the wifi-password? Oh, let me bash that for you:"
 
 # Install other useful binaries.
 brew install imagemagick optipng
