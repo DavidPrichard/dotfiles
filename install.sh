@@ -125,7 +125,8 @@ brew install mongo
 
 ################### Applications ###################
 
-echo "The rest will be installed to /Applications"
+# Quicklook plugins
+brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode 
 
 # Text-Editors
 brew cask install focuswriter
