@@ -21,6 +21,7 @@ alias rm='rm -i -v'
 alias cp='cp -i -v'
 
 alias cask='brew cask'
+alias hub='git'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
