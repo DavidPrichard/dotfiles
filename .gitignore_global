@@ -9,3 +9,7 @@
 # Windows-generated files
 Desktop.ini
 Thumbs.db
+
+# Editor files
+*~
+.*.swp
