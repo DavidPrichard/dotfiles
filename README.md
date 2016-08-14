@@ -3,13 +3,10 @@
 ## How to use
 
 Run the following command to install:
+
 ```bash
-cd; curl -#L https://github.com/mathiasbynens/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,.osx,LICENSE-MIT.txt}
+git clone https://github.com/davidprichard/dotfiles.git && cd dotfiles && source install.sh
 ```
-
-To update, just run it again.
-
-## Overview
 
 ## Other resources, references, thanks
 
