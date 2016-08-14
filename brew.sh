@@ -10,6 +10,7 @@ brew upgrade --all
 brew install coreutils moreutils findutils
 brew install gnu-sed --with-default-names
 brew install wget --with-iri
+brew install pv rename
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 
@@ -27,17 +28,24 @@ brew cask install github-desktop
 # Browsers
 brew cask install firefoxdeveloperedition
 
-
 # Install more recent versions of some macOS tools.
 brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php56 --with-gmp
+brew install homebrew/dupes/whois
+brew install openssl
+brew link --force openssl
 
 # Font Tools
 brew tap bramstein/webfonttools
 brew install woff2 sfntly ots fonttools
+
+# Image Tools
+brew install imagemagick optipng
+
+# Compression/Decompression
+brew install p7zip brotli zopfli
 
 # Forensics
 brew install exiftool foremost
@@ -48,13 +56,12 @@ brew install nmap
 brew install tcpflow tcpreplay tcptrace
 brew cask install wireshark-chmodbpf
 brew install wireshark --with-qt5
-brew install wifi-password # "what's the wifi-password? Oh, let me bash that for you:"
-
-# Install other useful binaries.
-brew install imagemagick optipng
-brew install p7zip brotli zopfli
-brew install pv rename
+brew install wifi-password # "what's the wifi-password? Oh, let me sh that for you:"
 brew install testssl
+
+# Other
+brew cask install spectacle
+
 
 # Remove outdated versions from the cellar.
 brew cleanup
