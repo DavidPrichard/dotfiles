@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
+# Update all the things
+function update() {
+# App Store apps
+sudo softwareupdate -i -a
+
+# Homebrew (Cask) & packages
+brew update
+brew upgrade --all
+brew cleanup
+
+# npm & packages
+npm install npm -g
+npm update -g
+
+# Ruby & gems
+sudo gem update —system
+sudo gem update
+}
+
 # Simple calculator
 function calc() {
 	local result="";
