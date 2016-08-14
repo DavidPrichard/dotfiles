@@ -146,6 +146,8 @@ brew cask install vlc
 # Others
 brew cask install flux spectacle
 
+################### Finish ################### 
+
 # Remove outdated versions from the cellar.
 brew cleanup
 brew doctor
