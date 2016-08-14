@@ -65,7 +65,6 @@ brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
 brew install homebrew/dupes/whois
 brew install openssl
-brew link --force openssl
 
 
 ################### Git ################### 
