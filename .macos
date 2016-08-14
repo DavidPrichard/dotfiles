@@ -230,7 +230,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 ###############################################################################
 
 # Set the icon size of Dock items in pixels
-defaults write com.apple.dock tilesize -int 48
+defaults write com.apple.dock tilesize -int 96
 
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
