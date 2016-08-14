@@ -3,6 +3,9 @@
 # Get sudo permission upfront
 sudo -v
 
+# Keep-alive: update existing `sudo` time stamp until script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 ################### XCode Command Line Tools ###################
 # from https://github.com/alrra/dotfiles/blob/ff123ca9b9b/os/os_x/installs/install_xcode.sh
 
