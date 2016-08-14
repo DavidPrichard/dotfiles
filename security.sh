@@ -3,13 +3,16 @@
 # Ask for the administrator password upfront
 sudo -v
 
+echo "Enablign Firewall"
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -bool true
+
 echo "Enabling Stealth Mode."
 sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
 
 echo "Disable saving documents to iCloud by default"
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-echo "Disable Captive Portal (automatically connecting to, say, hotel wifi through a Safari window)"
+echo "Disable Captive Portal (automatically connecting to, say, hotel wifi through Safari)"
 defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
 echo "Enable Secure Keyboard Entry in Terminal.app"
@@ -31,6 +34,6 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
 
-echo "Privacy: don’t send search queries to Apple"
+echo "Don’t send search queries to Apple from Safari or Spotlight"
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
