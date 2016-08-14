@@ -3,22 +3,22 @@
 # Ask for the administrator password upfront
 sudo -v
 
-echo "Enablign Firewall"
+echo "Enabling Firewall"
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -bool true
 
 echo "Enabling Stealth Mode."
 sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
 
-echo "Disable saving documents to iCloud by default"
+echo "Disabling saving documents to iCloud by default"
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-echo "Disable Captive Portal (automatically connecting to, say, hotel wifi through Safari)"
+echo "Disabling Captive Portal (automatically connecting to, say, hotel wifi through Safari)"
 defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
-echo "Disable Bonjour mDNS advertisements"
+echo "Disabling Bonjour mDNS advertisements"
 sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
 
-echo "Enable Secure Keyboard Entry in Terminal.app"
+echo "Enabling Secure Keyboard Entry in Terminal.app"
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 echo "Lock screen after it goes to screensaver"
