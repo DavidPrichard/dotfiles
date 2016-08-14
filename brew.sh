@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# ask for sudo permission upfront
+sudo -v
+
+# Install Xcode Command Line Tools
+xcode-select --install
+
+# Agree to the XCode license
+sudo xcodebuild -license
+
 # Install command-line tools using Homebrew.
 
 brew update
