@@ -33,14 +33,11 @@ brew update
 brew tap homebrew/services
 brew tap caskroom/versions
 
-echo "Checking for potential problems..."
 brew upgrade --all
-brew doctor
 
 ################### Shell/GNU Utilites ################### 
 
 echo "Installing up-to-date core utilities"
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils moreutils findutils
 brew install gnu-sed --with-default-names
 brew install wget --with-iri
@@ -71,7 +68,6 @@ brew install openssl
 
 echo "Installing the latest version of Git"
 brew install git
-echo "export PATH=/usr/local/bin:$PATH" >> ~/.bash_profile
 
 echo "Installing Git utilities"
 brew install git-lfs bfg ack hub # alias hub as git!
@@ -153,6 +149,5 @@ brew cask install flux spectacle
 
 # Remove outdated versions from the cellar.
 brew cleanup
-brew doctor
 
 echo "Complete."
