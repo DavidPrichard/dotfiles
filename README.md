@@ -1,12 +1,24 @@
 # David’s dotfiles
 
+Just my personal dotfiles. Nothing special, but feel free to use if you want. The only significant difference from the dotfiles listed below is in
+* the utilites/programs installed
+* the security.sh script, which attempts to improve the default security settings. Inspired by [Dr' Duh's security guide](https://github.com/drduh/OS-X-Security-and-Privacy-Guide).
+
 ## How to use
 
-Run the following command to install:
+Run the following command to install everything:
 
 ```bash
-git clone https://github.com/davidprichard/dotfiles.git && cd dotfiles && source install.sh
+git clone https://github.com/davidprichard/dotfiles.git && cd dotfiles && source setup.sh
 ```
+
+Several scripts can be run on their own:
+
+`install.sh` loads the programs, utilities, programming languages, etc. that I find useful.
+
+`security.sh` changes system (and some application) settings to try to improve security and privacy.
+
+`preferences.sh` changes system settings to my personal preferences. (this is called .macos/.osx in other dotfiles).
 
 ## Other resources, references, thanks
 
