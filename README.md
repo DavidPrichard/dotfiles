@@ -15,13 +15,20 @@ git clone https://github.com/davidprichard/dotfiles.git && cd dotfiles && source
 Several scripts can be run on their own:
 
 `install.sh` loads the programs, utilities, programming languages, etc. that I find useful.
-```curl https://raw.githubusercontent.com/davidprichard/dotfiles/install.sh && source install.sh```
+
+```bash
+curl https://raw.githubusercontent.com/davidprichard/dotfiles/install.sh && source install.sh
+```
 
 `security.sh` changes system (and some application) settings to try to improve security and privacy.
-```curl https://raw.githubusercontent.com/davidprichard/dotfiles/security.sh && source security.sh```
+```bash
+curl https://raw.githubusercontent.com/davidprichard/dotfiles/security.sh && source security.sh
+```
 
 `preferences.sh` changes system settings to my personal preferences. (this is called .macos/.osx in other dotfiles).
-```curl https://raw.githubusercontent.com/davidprichard/dotfiles/preferences.sh && source preferences.sh```
+```bash
+curl https://raw.githubusercontent.com/davidprichard/dotfiles/preferences.sh && source preferences.sh
+```
 
 ## Other resources, references, thanks
 
