@@ -15,8 +15,15 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 echo "Disable Captive Portal (automatically connecting to, say, hotel wifi through Safari)"
 defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
+echo "Disable Bonjour mDNS advertisements"
+sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
+
 echo "Enable Secure Keyboard Entry in Terminal.app"
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
+
+echo "Lock screen after it goes to screensaver"
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 ### More Aggressive Automatic Update ###
 echo "Applying more aggressive automatic update settings"
