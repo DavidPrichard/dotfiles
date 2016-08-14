@@ -2,21 +2,21 @@
 
 # Update all the things
 function update() {
-# App Store apps
-sudo softwareupdate -i -a
+	# App Store apps
+	sudo softwareupdate -i -a
 
-# Homebrew (Cask) & packages
-brew update
-brew upgrade --all
-brew cleanup
+	# Homebrew (Cask) & packages
+	brew update
+	brew upgrade --all
+	brew cleanup
 
-# npm & packages
-npm install npm -g
-npm update -g
+	# npm & packages
+	npm install npm -g
+	npm update -g
 
-# Ruby & gems
-sudo gem update —system
-sudo gem update
+	# Ruby & gems
+	sudo gem update —system
+	sudo gem update
 }
 
 # Simple calculator
