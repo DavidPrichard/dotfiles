@@ -1,5 +1,6 @@
-# Load homebrewed GNU coreutils into PATH
+# Load homebrewed GNU coreutils into PATH (ditto with their manpages)
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # Place brewed (user/local/bin) stuff in PATH before system stuff. May cause problems!
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
