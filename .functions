@@ -246,8 +246,7 @@ function v() {
 	fi;
 }
 
-# `o` with no arguments opens the current directory, otherwise opens the given
-# location
+# Open works on current dir if given no arguments.
 function open() {
 	if [ $# -eq 0 ]; then
 		open .;
