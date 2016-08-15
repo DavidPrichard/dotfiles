@@ -41,6 +41,7 @@ echo "Installing up-to-date core utilities"
 brew install coreutils moreutils findutils
 brew install gnu-sed --with-default-names
 brew install wget --with-iri
+brew install ack
 brew install pv rename
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
@@ -56,7 +57,6 @@ fi;
 brew install bash-completion
 
 # Install more recent versions of some macOS tools.
-brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
@@ -70,8 +70,9 @@ echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install git-lfs bfg ack hub # alias hub as git!
+brew install git-lfs bfg hub # alias hub as git!
 brew cask install github-desktop
+
 
 ################### Other Utilities ################### 
 
@@ -124,9 +125,10 @@ brew install mongo
 brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode 
 
 # Text-Editors
-brew cask install focuswriter
+brew install vim --override-system-vi
+brew cask install sublime-text
 brew cask install atom
-# vim, vi, sublime
+brew cask install focuswriter
 
 # Browsers
 brew cask install google-chrome firefox
@@ -143,7 +145,8 @@ brew cask install virtualbox
 brew cask install vlc
 
 # Others
-brew cask install flux spectacle
+brew cask install flux 
+brew cask install spectacle
 
 ################### Finish ################### 
 
