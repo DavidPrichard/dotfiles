@@ -144,6 +144,9 @@ brew cask install virtualbox
 # Media Playback
 brew cask install vlc
 
+# FTP
+brew cask install cyberduck
+
 # Others
 brew cask install flux 
 brew cask install spectacle
