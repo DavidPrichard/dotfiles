@@ -1,5 +1,5 @@
-# Load GNU coreutils into PATH
+# Load homebrewed GNU coreutils into PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-# Add `$(brew --prefix)/bin` and `$(brew --prefix)/sbin` to the `$PATH`
+# Place brewed (user/local/bin) stuff in PATH before system stuff. May cause problems!
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
