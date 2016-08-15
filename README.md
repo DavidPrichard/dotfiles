@@ -2,7 +2,7 @@
 
 Just my personal dotfiles. Nothing special, but feel free to use if you want. The only significant difference from the dotfiles listed below is in
 * the utilites/programs installed
-* the security.sh script, which attempts to improve the default security settings. Inspired by [Dr. Duh's security guide](https://github.com/drduh/OS-X-Security-and-Privacy-Guide).
+* the security.sh script, which attempts to (modestly) improve the default security settings.
 
 ## How to use
 
@@ -30,6 +30,12 @@ curl https://raw.githubusercontent.com/davidprichard/dotfiles/security.sh && sou
 curl https://raw.githubusercontent.com/davidprichard/dotfiles/preferences.sh && source preferences.sh
 ```
 
+## Limitations
+
+* Not all useful system settings can be altered by script, so it is very much worth it to go through every section of System Preferences to change everything to how you like it.
+* The biggest security wins would probably be installing privacy- and security-minded add-ons to the browsers; unfortunately, this can't be done by script. I strongly recommend installing the EFF's [HTTPS Everywhere](https://www.eff.org/https-everywhere) extension on Chrome and Firefox, and further installing [NoScript](https://noscript.net/) on Firefox for general browsing. 
+
+
 ## Other resources, references, thanks
 
 My dotfiles is forked from [Mathis Bynens'](https://mathiasbynens.be/) macOS [dotfiles](https://github.com/mathiasbynens/dotfiles), incorporating bits and bobs from
@@ -39,3 +45,4 @@ My dotfiles is forked from [Mathis Bynens'](https://mathiasbynens.be/) macOS [do
 * Kevin Suttle's [OS X default values command reference](https://github.com/kevinSuttle/OSXDefaults/blob/master/REFERENCE.md)
 * Haralan Dobrev's [dotfiles](https://github.com/hkdobrev/dotfiles/)
 * Matijs Brinkhuis' [dotfiles](https://github.com/matijs/dotfiles)
+* Dr. Duh's [security guide](https://github.com/drduh/OS-X-Security-and-Privacy-Guide)
