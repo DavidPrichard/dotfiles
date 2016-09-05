@@ -10,13 +10,10 @@ function update() {
 	brew upgrade --all
 	brew cleanup
 
-	# npm & packages
-	npm install npm -g
-	npm update -g
-
 	# Ruby & gems
 	sudo gem update —system
 	sudo gem update
+	sudo gem cleanup
 }
 
 # Simple calculator
