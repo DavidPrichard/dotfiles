@@ -1,8 +1,6 @@
 # David’s dotfiles
 
-Just my personal dotfiles. Nothing special, but feel free to use if you want. The only significant difference from the dotfiles listed below is in
-* the utilites/programs installed
-* the security.sh script, which attempts to (modestly) improve the default security settings.
+Just my personal dotfiles for macOS.
 
 ## How to use
 
