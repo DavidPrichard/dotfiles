@@ -110,7 +110,7 @@ brew install haskell-platform haskell-stack
 brew install elm
 
 # Web 
-gem install jekyll
+sudo gem install jekyll
 stack install hakyll
 pip3 install django
 pip3 install flask
