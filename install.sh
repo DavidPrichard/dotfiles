@@ -97,13 +97,15 @@ brew install wifi-password # "what's the wifi-password? for guests."
 echo "Installing Programming Languages"
 
 brew install ruby # yes, even though it was installed for Homebrew itself.
+
 brew install python3
+pip3 install virtualenv
+
+brew cask install racket
 
 brew cask install java visualvm
 brew install scala sbt wartremover
 brew install leiningen # clojure
-
-brew cask install racket
 
 brew install haskell-platform haskell-stack
 
