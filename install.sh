@@ -90,17 +90,18 @@ brew install p7zip brotli zopfli
 brew install exiftool foremost
 
 # Wifi
-brew install wifi-password # "what's the wifi-password? Oh, let me sh that for you:"
+brew install wifi-password # "what's the wifi-password? for guests."
 
 ################### Programming Languages ################### 
 
 echo "Installing Programming Languages"
 
+brew install ruby # yes, even though it was installed for Homebrew itself.
 brew install python3
 
 brew cask install java visualvm
-brew install scala sbt
-brew install leiningen
+brew install scala sbt wartremover
+brew install leiningen # clojure
 
 brew cask install racket
 
@@ -108,16 +109,17 @@ brew install haskell-platform haskell-stack
 
 brew install elm
 
-# Frameworks
-#pip3 install django
-#stack install hakyll
+# Web 
+gem install jekyll
+stack install hakyll
+pip3 install django
+pip3 install flask
 
 ################### Databases ################### 
 
 echo "Installing Databases"
-brew install mysql 
+brew install mariadb
 brew install postgres
-brew install mongo
 
 ################### Applications ###################
 
@@ -138,7 +140,7 @@ brew cask install caskroom/versions/safari-technology-preview
 # Communication
 brew cask install skype slack
 
-# Virtulaization
+# VMs
 brew cask install virtualbox
 
 # Media Playback
