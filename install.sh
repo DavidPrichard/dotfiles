@@ -89,7 +89,8 @@ brew install p7zip brotli zopfli
 # Forensics
 brew install exiftool foremost
 
-# Wifi
+# Networking
+brew install nmap # simple port-scanner
 brew install wifi-password # "what's the wifi-password? for guests."
 
 ################### Programming Languages ################### 
@@ -148,7 +149,7 @@ brew cask install virtualbox
 # Media Playback
 brew cask install vlc
 
-# FTP
+# SFTP Client
 brew cask install cyberduck
 
 # Others
