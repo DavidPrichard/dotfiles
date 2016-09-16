@@ -134,6 +134,7 @@ brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qls
 brew install vim --override-system-vi
 brew cask install sublime-text
 brew cask install atom
+brew cask install visual-studio-code
 brew cask install focuswriter
 
 # Browsers
