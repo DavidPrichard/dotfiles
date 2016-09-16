@@ -114,9 +114,10 @@ brew install elm
 
 # Web 
 sudo gem install jekyll
-stack install hakyll
-pip3 install django
-pip3 install flask
+pip3     install django
+pip3     install flask
+raco pkg install pollen
+stack    install hakyll
 
 ################### Databases ################### 
 
