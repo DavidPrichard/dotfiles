@@ -142,6 +142,9 @@ brew cask install google-chrome firefox
 brew cask install caskroom/versions/firefoxdeveloperedition
 brew cask install caskroom/versions/safari-technology-preview
 
+# Backup
+brew cask install crashplan
+
 # Communication
 brew cask install skype slack
 
