@@ -91,7 +91,8 @@ brew install exiftool foremost
 
 # Networking
 brew install nmap # simple port-scanner
-brew install wifi-password # "what's the wifi-password? for guests."
+brew install httpstat # basically curl -v with prettier output
+brew install wifi-password # "what's the wifi-password?"
 
 ################### Programming Languages ################### 
 
