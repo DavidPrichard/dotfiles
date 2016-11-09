@@ -13,7 +13,7 @@ if ! xcode-select --print-path &> /dev/null; then
 
   echo "Installing Xcode Command Line Tools"
   xcode-select --install
-  
+
   # Wait until the XCode Command Line Tools are installed
   until xcode-select --print-path &> /dev/null; do
       sleep 5
@@ -25,7 +25,7 @@ if ! xcode-select --print-path &> /dev/null; then
 
 fi
 
-################### Homebrew ################### 
+################### Homebrew ###################
 
 echo "Installing Homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -35,7 +35,7 @@ brew tap caskroom/versions
 
 brew upgrade --all
 
-################### Shell/GNU Utilites ################### 
+################### Shell/GNU Utilites ###################
 
 echo "Installing up-to-date core utilities"
 brew install coreutils moreutils findutils
@@ -64,7 +64,7 @@ brew install homebrew/dupes/whois
 brew install openssl
 
 
-################### Git ################### 
+################### Git ###################
 
 echo "Installing the latest version of Git"
 brew install git
@@ -74,7 +74,7 @@ brew install git-lfs bfg hub # alias hub as git!
 brew cask install github-desktop
 
 
-################### Other Utilities ################### 
+################### Other Utilities ###################
 
 # Font Tools
 brew tap bramstein/webfonttools
@@ -94,7 +94,7 @@ brew install nmap # simple port-scanner
 brew install httpstat # basically curl -v with prettier output
 brew install wifi-password # "what's the wifi-password?"
 
-################### Programming Languages ################### 
+################### Programming Languages ###################
 
 echo "Installing Programming Languages"
 
@@ -113,14 +113,14 @@ brew install haskell-platform haskell-stack
 
 brew install elm
 
-# Web 
+# Web
 sudo gem install jekyll
 pip3     install django
 pip3     install flask
 raco pkg install pollen
 stack    install hakyll
 
-################### Databases ################### 
+################### Databases ###################
 
 echo "Installing Databases"
 brew install mariadb
@@ -129,7 +129,7 @@ brew install postgres
 ################### Applications ###################
 
 # Quicklook plugins
-brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode 
+brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode
 
 # Text-Editors
 brew install vim --override-system-vi
@@ -159,11 +159,11 @@ brew cask install vlc
 brew cask install cyberduck
 
 # Others
-brew cask install flux 
+brew cask install flux
 brew cask install spectacle
 brew cask install unity
 
-################### Finish ################### 
+################### Finish ###################
 
 # Remove outdated versions from the cellar.
 brew cleanup
