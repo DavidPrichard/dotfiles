@@ -22,6 +22,7 @@ alias cp='cp -i -v'
 
 alias cask='brew cask'
 alias hub='git'
+alias loc='cloc $(git ls-files)' # counts lines of code in current repo.
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

@@ -70,7 +70,7 @@ echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install git-lfs bfg hub # alias hub as git!
+brew install git-lfs bfg cloc hub # alias hub as git!
 brew cask install github-desktop
 
 
