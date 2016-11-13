@@ -31,7 +31,7 @@ curl https://raw.githubusercontent.com/davidprichard/dotfiles/preferences.sh && 
 ## Limitations
 
 * Not all useful system settings can be altered by script, so it is very much worth it to go through every section of System Preferences to change everything to how you like it.
-* The biggest security wins would probably be installing privacy- and security-minded add-ons to the browsers; unfortunately, this can't be done by script. I strongly recommend installing the EFF's [HTTPS Everywhere](https://www.eff.org/https-everywhere) extension on Chrome and Firefox, and further installing [NoScript](https://noscript.net/) on Firefox for general browsing. 
+* The biggest security wins would probably be installing privacy- and security-minded add-ons to the browsers; unfortunately, this can't be done by script. I strongly recommend installing the EFF's [HTTPS Everywhere](https://www.eff.org/https-everywhere) extension on Chrome and Firefox, and further installing [NoScript](https://noscript.net/) on Firefox for general browsing.
 
 
 ## Other resources, references, thanks
