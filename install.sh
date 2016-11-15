@@ -47,6 +47,8 @@ ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install Bash 4.
 brew install bash
+
+# Switch default shell to brew-installed bash
 if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
   echo "Installing an updated version of Bash"
   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
@@ -62,6 +64,7 @@ brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
 brew install homebrew/dupes/whois
 brew install openssl
+brew install wget --with-iri
 
 
 ################### Git ###################
@@ -73,6 +76,35 @@ echo "Installing Git utilities"
 brew install git-lfs bfg cloc hub # alias hub as git!
 brew cask install github-desktop
 
+################### Programming Languages ###################
+
+echo "Installing Programming Languages"
+
+brew install ruby # yes, even though it was installed for Homebrew itself.
+
+brew install python3
+pip3 install virtualenv
+
+brew install go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin # to enable go get
+
+brew cask install racket
+
+brew cask install java visualvm
+brew install scala sbt wartremover
+brew install leiningen # clojure
+
+brew install haskell-platform haskell-stack
+
+brew install elm
+
+################### Web Frameworks ###################
+
+sudo gem install jekyll
+pip3     install django
+pip3     install flask
+raco pkg install pollen
+stack    install hakyll
 
 ################### Other Utilities ###################
 
@@ -82,6 +114,7 @@ brew install woff2 sfntly ots fonttools
 
 # Image Tools
 brew install imagemagick optipng
+go get -u github.com/fogleman/primitive
 
 # Compression/Decompression
 brew install p7zip brotli zopfli
@@ -94,31 +127,8 @@ brew install nmap # simple port-scanner
 brew install httpstat # basically curl -v with prettier output
 brew install wifi-password # "what's the wifi-password?"
 
-################### Programming Languages ###################
-
-echo "Installing Programming Languages"
-
-brew install ruby # yes, even though it was installed for Homebrew itself.
-
-brew install python3
-pip3 install virtualenv
-
-brew cask install racket
-
-brew cask install java visualvm
-brew install scala sbt wartremover
-brew install leiningen # clojure
-
-brew install haskell-platform haskell-stack
-
-brew install elm
-
-# Web
-sudo gem install jekyll
-pip3     install django
-pip3     install flask
-raco pkg install pollen
-stack    install hakyll
+# Misc
+brew install dark-mode
 
 ################### Databases ###################
 
@@ -162,6 +172,15 @@ brew cask install cyberduck
 brew cask install flux
 brew cask install spectacle
 brew cask install unity
+
+################### App Store ###################
+brew install mas
+
+echo "Enter your Apple ID (email) to install App Store programs."
+read apple_id
+mas signin $apple_id
+
+mas install 1175103038 # Primitive
 
 ################### Finish ###################
 
