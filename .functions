@@ -14,6 +14,10 @@ function update() {
 	sudo gem update —system;
 	sudo gem update;
 	sudo gem cleanup;
+
+	# npm
+	npm install npm -g;
+	npm update -g;
 }
 
 # Change working directory to the top-most Finder window location
@@ -21,7 +25,7 @@ function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
-# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+# Create a .tar.gz archive, using zopfli, pigz or gzip for compression
 function targz() {
 	local tmpFile="${@%/}.tar";
 	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;

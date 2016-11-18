@@ -76,7 +76,7 @@ echo "Installing Git utilities"
 brew install git-lfs bfg cloc hub # alias hub as git!
 brew cask install github-desktop
 
-################### Programming Languages ###################
+################### Languages and Package Mangers ###################
 
 echo "Installing Programming Languages"
 
@@ -97,6 +97,7 @@ brew install leiningen # clojure
 brew install haskell-platform haskell-stack
 
 brew install elm
+brew install npm
 
 ################### Web Frameworks ###################
 
@@ -123,9 +124,11 @@ brew install p7zip brotli zopfli
 brew install exiftool foremost
 
 # Networking
-brew install nmap # simple port-scanner
-brew install httpstat # basically curl -v with prettier output
+brew install nmap # port-scanner
+brew install httpie # http requests, etc.
+go get -u github.com/davidprichard/httpstat # latency
 brew install wifi-password # "what's the wifi-password?"
+npm install -g iponmap
 
 # Misc
 brew install dark-mode
