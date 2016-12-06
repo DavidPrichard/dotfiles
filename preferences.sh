@@ -374,8 +374,15 @@ sudo mdutil -E / > /dev/null
 # Terminal & iTerm 2                                                          #
 ###############################################################################
 
+# Open the app so the preference files get initialized
+open -g "$HOME/Applications/iTerm.app" && sleep 2 && osascript -e 'quit app "iTerm"'
+
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
+
+# Set font to Menlo Regular 18px
+/usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Normal Font' Menlo-Regular 18 " ~/Library/Preferences/com.googlecode.iTerm2.plist
+/usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Non Ascii Font' Menlo-Regular 18" ~/Library/Preferences/com.googlecode.iTerm2.plist
 
 # Use a modified version of the Solarized Dark theme by default in Terminal.app
 osascript <<EOD
@@ -424,11 +431,11 @@ end tell
 
 EOD
 
-# Disable the annoying line marks
-defaults write com.apple.Terminal ShowLineMarks -int 0
-
 # Install the Solarized Dark theme for iTerm
 open "${HOME}/init/Solarized Dark.itermcolors"
+
+# Disable the annoying line marks
+defaults write com.apple.Terminal ShowLineMarks -int 0
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
