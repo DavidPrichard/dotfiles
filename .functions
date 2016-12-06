@@ -214,7 +214,7 @@ function s() {
 	fi;
 }
 
-# `a` with no arguments opens the current directory in Atom Editor, otherwise
+# `a` with no arguments opens the current directory in Atom, otherwise
 # opens the given location
 function a() {
 	if [ $# -eq 0 ]; then
@@ -234,11 +234,28 @@ function v() {
 	fi;
 }
 
-# Open works on current dir if given no arguments.
+# Open the file or, if given no arguments, the current dir.
 function open() {
 	if [ $# -eq 0 ]; then
 		open .;
 	else
 		open "$@";
+	fi;
+}
+
+# Execute a script if given a file, otherwise treat the cd as a project root
+# and try to identify and build it.
+function run() {
+
+	if [ $# -gt 0 ]; then
+		source "$@"; # if given arguments, try to execute as a script
+	elif [ -e Cargo.toml ]; then
+		echo "Cargo (Rust) project detected. Building with Cargo."
+		cargo run;
+	elif [ -e build.sbt ] then
+		echo "SBT (Scala) project detected. Building with SBT."
+		sbt run;
+	else
+		echo "Could not identify the project to be run.";
 	fi;
 }
