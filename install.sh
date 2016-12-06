@@ -45,18 +45,16 @@ brew install ack
 brew install pv rename
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-# Install Bash 4.
+# Install newest version of bash & completions
+echo "Installing up-to-date version of bash."
 brew install bash
+brew install bash-completion
 
 # Switch default shell to brew-installed bash
 if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-  echo "Installing an updated version of Bash"
   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
   chsh -s /usr/local/bin/bash;
 fi;
-
-# Install completions
-brew install bash-completion
 
 # Install more recent versions of some macOS tools.
 brew install homebrew/dupes/grep
@@ -73,14 +71,14 @@ echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install git-lfs bfg cloc hub # alias hub as git!
+brew install git-lfs bfg cloc hub # hub is aliased as git by .aliases
 brew cask install github-desktop
 
 ################### Languages and Package Mangers ###################
 
-echo "Installing Programming Languages"
+echo "Installing Programming Languages and Package Managers"
 
-brew install ruby # yes, even though it was installed for Homebrew itself.
+brew install ruby # yes, despite being installed for Homebrew itself.
 
 brew install python3
 pip3 install virtualenv
@@ -90,7 +88,7 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin # to enable go get
 
 brew cask install racket
 
-brew cask install java visualvm
+brew cask install java visualvm jprofiler
 brew install scala sbt wartremover
 brew install leiningen # clojure
 
@@ -117,6 +115,9 @@ brew install woff2 sfntly ots fonttools
 brew install imagemagick optipng
 go get -u github.com/fogleman/primitive
 
+# QR Generation
+brew install qrencode
+
 # Compression/Decompression
 brew install p7zip brotli zopfli
 
@@ -132,6 +133,7 @@ npm install -g iponmap
 
 # Misc
 brew install dark-mode
+brew install figlet
 
 ################### Databases ###################
 
@@ -140,6 +142,9 @@ brew install mariadb
 brew install postgres
 
 ################### Applications ###################
+
+# iTerm
+brew cask install iterm2
 
 # Quicklook plugins
 brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode
@@ -175,6 +180,15 @@ brew cask install cyberduck
 brew cask install flux
 brew cask install spectacle
 brew cask install unity
+
+################### Atom Plugins ###################
+
+apm language-scala
+apm install hydrogen # evaluation
+#apm install ensime # buggy
+
+apm install language-rust
+apm install linter-rust
 
 ################### App Store ###################
 brew install mas
