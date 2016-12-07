@@ -121,15 +121,27 @@ brew install qrencode
 # Compression/Decompression
 brew install p7zip brotli zopfli
 
-# Forensics
-brew install exiftool foremost
+# Forensics & Data Recovery
+brew install exiftool # Exif Inspection/Alteration
+brew install autopsy # Sleuth Kit GUI Version
+brew install foremost # file recovery
+brew install ddrescue # copy entire partition w/ damage
+brew install testdisk # filesystem repair
 
 # Networking
+brew install ncat # general-purpose networking
 brew install nmap # port-scanner
+brew install ngrep # network packet search
+
 brew install httpie # http requests, etc.
-go get -u github.com/davidprichard/httpstat # latency
+go get -u github.com/davidprichard/httpstat # website latency
+
+#w3af # web vuln. scanner
+brew install skipfish
+brew install sqlmap
+
 brew install wifi-password # "what's the wifi-password?"
-npm install -g iponmap
+npm install -g iponmap # shows location of an IP address
 
 # Misc
 brew install dark-mode
@@ -175,6 +187,9 @@ brew cask install vlc
 
 # SFTP Client
 brew cask install cyberduck
+
+# Security
+brew cask owasp-zap # basic web vuln. scanning
 
 # Others
 brew cask install flux
