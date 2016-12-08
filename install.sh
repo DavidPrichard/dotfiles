@@ -168,6 +168,8 @@ brew cask install atom
 brew cask install visual-studio-code
 brew cask install focuswriter
 
+brew install emacs --with-cocoa; brew linkapps emacs
+
 # Browsers
 brew cask install google-chrome firefox
 brew cask install caskroom/versions/firefoxdeveloperedition
@@ -189,7 +191,10 @@ brew cask install vlc
 brew cask install cyberduck
 
 # Security
-brew cask owasp-zap # basic web vuln. scanning
+brew cask install owasp-zap # basic web vuln. scanning
+
+# Music Creation
+brew cask install sonic-pi
 
 # Others
 brew cask install flux
