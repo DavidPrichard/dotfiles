@@ -79,6 +79,7 @@ brew cask install github-desktop
 echo "Installing Programming Languages and Package Managers"
 
 brew install ruby # yes, despite being installed for Homebrew itself.
+gem install bundler
 
 brew install python3
 pip3 install virtualenv
@@ -143,6 +144,7 @@ brew install wifi-password # "what's the wifi-password?"
 npm install -g iponmap # shows location of an IP address
 
 # Misc
+brew install tree # prints out directory structure.
 brew install dark-mode
 brew install figlet
 
