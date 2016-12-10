@@ -8,6 +8,9 @@ function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude "install.sh" \
+		--exclude "setup.sh" \
+		--exclude "preferences.sh" \
+		--exclude "security.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE.txt" \
 		-avh --no-perms . ~;

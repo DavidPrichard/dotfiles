@@ -19,9 +19,11 @@ alias g="git"
 alias h="history"
 alias j="jobs"
 
-alias mv='mv -v'
+
+alias mv='mv -i -v'
 alias rm='rm -i -v'
 alias cp='cp -i -v'
+alias ln='ln -i -v'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

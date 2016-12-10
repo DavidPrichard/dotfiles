@@ -5,9 +5,10 @@ export PYTHONIOENCODING='UTF-8';
 
 # Increase Bash history size. Allow 5000 entries; the default is 500.
 export HISTSIZE='5000';
-export HISTFILESIZE="${HISTSIZE}";
-# Omit duplicates and commands that begin with a space from history.
-export HISTCONTROL='ignoreboth';
+export HISTFILESIZE='20000';
+
+# Omit successive duplicate commands
+export HISTCONTROL='ignoredups';
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';

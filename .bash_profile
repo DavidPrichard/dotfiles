@@ -20,9 +20,6 @@ shopt -s histappend;
 # Append commands instead of overwriting, increase history file size,
 # increase number of commands saved, ignore same successive entries.
 shopt -s histappend
-export HISTFILESIZE=20000
-export HISTSIZE=5000
-export HISTCONTROL=ignoredups
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
