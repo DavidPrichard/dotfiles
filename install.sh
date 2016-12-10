@@ -84,7 +84,6 @@ brew install python3
 pip3 install virtualenv
 
 brew install go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin # to enable go get
 
 brew cask install racket
 
