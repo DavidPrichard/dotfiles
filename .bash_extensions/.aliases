@@ -8,19 +8,18 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
+alias ~="cd ~"
 alias -- -="cd -"
 
 # Shortcuts
 alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
-alias g="git"
+alias desk="cd ~/Desktop"
+alias github="cd ~/GitHub"
 alias h="history"
 alias j="jobs"
 
-
-alias mv='mv -i -v'
+# Precautions: warn & be verbose with (potentially) destructive file operations
+alias mv='mv -i -v'r
 alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias ln='ln -i -v'
