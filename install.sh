@@ -89,7 +89,7 @@ brew install go
 brew cask install racket
 
 brew cask install java visualvm jprofiler
-brew install scala sbt wartremover
+brew install scala sbt wartremover ammonite-repl
 brew install leiningen # clojure
 
 brew install haskell-platform haskell-stack
@@ -178,6 +178,10 @@ brew cask install caskroom/versions/safari-technology-preview
 
 # Backup
 brew cask install crashplan
+
+# Key/Pswd Management
+brew cask install lastpass
+brew install lastpass-cli
 
 # Communication
 brew cask install skype slack
