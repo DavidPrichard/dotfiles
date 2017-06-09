@@ -43,6 +43,11 @@ brew install gnu-sed --with-default-names
 brew install wget --with-iri
 brew install ack
 brew install pv rename
+brew install grep
+brew install openssh
+brew install screen
+brew install whois
+brew install openssl
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install newest version of bash & completions
@@ -55,15 +60,6 @@ if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
   chsh -s /usr/local/bin/bash;
 fi;
-
-# Install more recent versions of some macOS tools.
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
-brew install homebrew/dupes/whois
-brew install openssl
-brew install wget --with-iri
-
 
 ################### Git ###################
 
@@ -92,7 +88,7 @@ brew cask install java visualvm jprofiler
 brew install scala sbt wartremover ammonite-repl
 brew install leiningen # clojure
 
-brew install haskell-platform haskell-stack
+brew install ghc cabal-install haskell-stack
 
 brew install elm
 brew install npm
@@ -129,7 +125,7 @@ brew install ddrescue # copy entire partition w/ damage
 brew install testdisk # filesystem repair
 
 # Networking
-brew install ncat # general-purpose networking
+brew install netcat # general-purpose networking
 brew install nmap # port-scanner
 brew install ngrep # network packet search
 
@@ -163,13 +159,13 @@ brew cask install iterm2
 brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode
 
 # Text-Editors
-brew install vim --override-system-vi
+brew install vim --with-override-system-vi
 brew cask install sublime-text
 brew cask install atom
 brew cask install visual-studio-code
 brew cask install focuswriter
 
-brew install emacs --with-cocoa; brew linkapps emacs
+brew cask install emacs # cocoa version
 
 # Browsers
 brew cask install google-chrome firefox
@@ -208,7 +204,7 @@ brew cask install unity
 
 ################### Atom Plugins ###################
 
-apm language-scala
+apm install language-scala
 apm install hydrogen # evaluation
 #apm install ensime # buggy
 
