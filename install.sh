@@ -71,7 +71,7 @@ echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install git-lfs bfg cloc hub # hub is aliased as git by .aliases
+brew install bfg cloc hub # hub is aliased as git by .aliases
 brew cask install github-desktop
 
 ################### Languages and Package Mangers ###################
