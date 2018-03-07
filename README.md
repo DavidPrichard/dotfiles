@@ -36,7 +36,7 @@ curl https://raw.githubusercontent.com/davidprichard/dotfiles/preferences.sh && 
 
 ## Other resources, references, thanks
 
-My dotfiles is forked from [Mathis Bynens'](https://mathiasbynens.be/) macOS [dotfiles](https://github.com/mathiasbynens/dotfiles), incorporating bits and bobs from
+My dotfiles is forked from [Mathias Bynens'](https://mathiasbynens.be/) macOS [dotfiles](https://github.com/mathiasbynens/dotfiles), incorporating bits and bobs from
 * Paul Miller's [dotfiles](https://github.com/paulmillr/dotfiles)
 * Paul Irish's [dotfiles](https://github.com/paulirish/dotfiles)
 * Ben Alman's [dotfiles](https://github.com/cowboy/dotfiles)
