@@ -7,6 +7,9 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 # Place brewed (user/local/bin) stuff in PATH before system stuff. May cause problems!
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 
+# Place cargo-installed binaries into PATH.
+export PATH="$HOME/.cargo/bin:$PATH"; # Add cargo's installed binaries
+
 # enable golang development by setting the GOPATH and such.
 # Note: This will be handled automatically by GO in the future.
 #     : https://github.com/golang/go/issues/17262
