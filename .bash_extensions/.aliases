@@ -14,15 +14,15 @@ alias -- -="cd -"
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias desk="cd ~/Desktop"
-alias github="cd ~/GitHub"
-alias h="history"
-alias j="jobs"
+alias gh="cd ~/GitHub"
 
 # Precautions: warn & be verbose with (potentially) destructive file operations
-alias mv='mv -i -v'r
+alias mv='mv -i -v'
 alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias ln='ln -i -v'
+alias chmod='chmod --preserve-root'
+alias chown='chown --preserve-root'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
