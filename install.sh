@@ -46,6 +46,11 @@ brew install gnu-sed --with-default-names
 brew install wget --with-iri
 brew install ack
 brew install pv rename
+brew install grep
+brew install openssh
+brew install screen
+brew install whois
+brew install openssl
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install newest version of bash & completions
@@ -59,22 +64,13 @@ if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
   chsh -s /usr/local/bin/bash;
 fi;
 
-# Install more recent versions of some macOS tools.
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
-brew install homebrew/dupes/whois
-brew install openssl
-brew install wget --with-iri
-
-
 ################### Git ###################
 
 echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install git-lfs bfg cloc hub # hub is aliased as git by .aliases
+brew install bfg cloc hub # hub is aliased as git by .aliases
 brew cask install github-desktop
 
 ################### Languages and Package Mangers ###################
@@ -91,11 +87,13 @@ brew install go
 
 brew cask install racket
 
+brew install rust
+
 brew cask install java visualvm jprofiler
 brew install scala sbt wartremover ammonite-repl
 brew install leiningen # clojure
 
-brew install haskell-platform haskell-stack
+brew install ghc cabal-install haskell-stack
 
 brew install elm
 brew install npm
@@ -112,6 +110,9 @@ stack    install hakyll
 
 # File Tools
 brew install tree # prints out directory structure.
+
+# Backup Tools
+pip3 install --upgrade b2
 
 # Font Tools
 brew tap bramstein/webfonttools
@@ -139,9 +140,9 @@ brew install ddrescue # copy entire partition w/ damage
 brew install testdisk # filesystem repair
 
 # Networking
-brew install ncat  # general-purpose networking
-brew install nmap  # port-scanner
-brew install ngrep # network packet search
+brew install netcat # general-purpose networking
+brew install nmap   # port-scanner
+brew install ngrep  # network packet search
 
 brew install httpie # http requests, etc.
 go get -u github.com/davidprichard/httpstat # website latency
@@ -151,7 +152,7 @@ brew install skipfish
 brew install sqlmap
 
 brew install wifi-password # "what's the wifi-password?"
-npm install -g iponmap # shows location of an IP address
+npm install -g iponmap     # shows location of an IP address
 
 # Misc/Fun
 brew install dark-mode
@@ -166,11 +167,10 @@ brew cask install iterm2
 brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode
 
 # Text-Editors
-brew install vim --override-system-vi
+brew install vim --with-override-system-vi
 brew cask install sublime-text
 brew cask install atom
 brew cask install visual-studio-code
-brew cask install focuswriter
 brew cask install emacs
 
 # Browsers
@@ -180,9 +180,6 @@ brew cask install caskroom/versions/safari-technology-preview
 
 # Backup
 brew cask install crashplan
-
-# Key/Pswd Management
-brew cask install lastpass
 
 # Communication
 brew cask install skype slack
@@ -202,21 +199,18 @@ brew cask install owasp-zap # basic web vuln. scanning
 # Music Creation
 brew cask install sonic-pi
 
-# Misc/Fun
-brew cask install cool-retro-term
-
 # Others
 brew cask install flux
 brew cask install spectacle
 
 ################### Atom Plugins ###################
 
-apm language-scala
-apm install hydrogen # evaluation
+#apm install language-scala
+#apm install hydrogen # evaluation
 #apm install ensime # buggy
 
-apm install language-rust
-apm install linter-rust
+#apm install language-rust
+#apm install linter-rust
 
 ################### App Store ###################
 brew install mas
@@ -226,6 +220,7 @@ read apple_id
 mas signin $apple_id
 
 mas install 1175103038 # Primitive
+mas install 777874532  # Cinemagraph Pro
 
 ################### Finish ###################
 
