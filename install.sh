@@ -35,6 +35,9 @@ brew tap caskroom/versions
 
 brew upgrade --all
 
+echo "Chaning usr/local permissions for Ruby etc."
+sudo chown -R $(whoami):admin /usr/local
+
 ################### Shell/GNU Utilites ###################
 
 echo "Installing up-to-date core utilities"
@@ -107,9 +110,12 @@ stack    install hakyll
 
 ################### Other Utilities ###################
 
+# File Tools
+brew install tree # prints out directory structure.
+
 # Font Tools
 brew tap bramstein/webfonttools
-brew install woff2 sfntly ots fonttools
+brew install woff2 ots fonttools #sfntly if they update to a maintained fork
 
 # Image Tools
 brew install imagemagick optipng
@@ -118,19 +124,23 @@ go get -u github.com/fogleman/primitive
 # QR Generation
 brew install qrencode
 
+# Pass Generation and Management
+pip3 install diceware
+brew install pass && echo "source /usr/local/etc/bash_completion.d/password-store" >> ~/.bashrc
+
 # Compression/Decompression
 brew install p7zip brotli zopfli
 
 # Forensics & Data Recovery
 brew install exiftool # Exif Inspection/Alteration
-brew install autopsy # Sleuth Kit GUI Version
+brew install autopsy  # Sleuth Kit GUI Version
 brew install foremost # file recovery
 brew install ddrescue # copy entire partition w/ damage
 brew install testdisk # filesystem repair
 
 # Networking
-brew install ncat # general-purpose networking
-brew install nmap # port-scanner
+brew install ncat  # general-purpose networking
+brew install nmap  # port-scanner
 brew install ngrep # network packet search
 
 brew install httpie # http requests, etc.
@@ -143,16 +153,9 @@ brew install sqlmap
 brew install wifi-password # "what's the wifi-password?"
 npm install -g iponmap # shows location of an IP address
 
-# Misc
-brew install tree # prints out directory structure.
+# Misc/Fun
 brew install dark-mode
 brew install figlet
-
-################### Databases ###################
-
-echo "Installing Databases"
-brew install mariadb
-brew install postgres
 
 ################### Applications ###################
 
@@ -168,8 +171,7 @@ brew cask install sublime-text
 brew cask install atom
 brew cask install visual-studio-code
 brew cask install focuswriter
-
-brew install emacs --with-cocoa; brew linkapps emacs
+brew cask install emacs
 
 # Browsers
 brew cask install google-chrome firefox
@@ -181,7 +183,6 @@ brew cask install crashplan
 
 # Key/Pswd Management
 brew cask install lastpass
-brew install lastpass-cli
 
 # Communication
 brew cask install skype slack
@@ -201,10 +202,12 @@ brew cask install owasp-zap # basic web vuln. scanning
 # Music Creation
 brew cask install sonic-pi
 
+# Misc/Fun
+brew cask install cool-retro-term
+
 # Others
 brew cask install flux
 brew cask install spectacle
-brew cask install unity
 
 ################### Atom Plugins ###################
 
