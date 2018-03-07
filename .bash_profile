@@ -16,10 +16,6 @@ shopt -s cdspell;
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
-# Append commands instead of overwriting, increase history file size,
-# increase number of commands saved, ignore same successive entries.
-shopt -s histappend
-
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
