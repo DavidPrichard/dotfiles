@@ -10,7 +10,3 @@ export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 # Place cargo-installed binaries into PATH.
 export PATH="$HOME/.cargo/bin:$PATH"; # Add cargo's installed binaries
 
-# enable golang development by setting the GOPATH and such.
-# Note: This will be handled automatically by GO in the future.
-#     : https://github.com/golang/go/issues/17262
-export GOPATH=$HOME/go # add a workspace and make it the GOPATH
