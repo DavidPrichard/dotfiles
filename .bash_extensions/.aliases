@@ -11,10 +11,18 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 alias -- -="cd -"
 
+# Correct common navigation typos
+alias cd.="cd ."
+
 # Shortcuts
-alias dl="cd ~/Downloads"
+alias home="cd ~/"
+alias dls="cd ~/Downloads"
 alias desk="cd ~/Desktop"
+alias docs="cd ~/Documents"
 alias gh="cd ~/GitHub"
+alias ans="cd ~/GitHub/Ansible-Playbooks"
+alias hosts="cd ~/GitHub/Ansible-Playbooks/hosts"
+alias .ssh="cd ~/.ssh/"
 
 # Precautions: warn & be verbose with (potentially) destructive file operations
 alias mv='mv -i -v'
@@ -23,6 +31,10 @@ alias cp='cp -i -v'
 alias ln='ln -i -v'
 alias chmod='chmod --preserve-root'
 alias chown='chown --preserve-root'
+
+# system status checks
+alias mounts='df -hT'
+alias audit='lynis audit system'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -48,7 +60,7 @@ alias egrep='egrep --color=auto'
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # Recursively delete `.DS_Store` files
-alias clean-ds="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
@@ -90,7 +102,7 @@ alias quiet="osascript -e 'set volume output muted true'"
 alias loud="osascript -e 'set volume output volume 100'"
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias di="dig +short @1.1.1.1"   
 alias localip="ipconfig getifaddr en0"
 
 # Show active network interfaces
@@ -102,10 +114,18 @@ alias sniffdns="sudo ngrep -q -Wbyline '' port 53"
 
 # Homebrew
 alias cask='brew cask'
+alias brew upgrade='brew upgrade && brew cleanup'
 
 # Git
 alias hub='git'
 alias loc='cloc $(git ls-files)' # counts lines of code in current repo.
+alias ignored-rm='git ls-files --ignored --exclude-standard -z | xargs -0 git rm --cached'
 
 # HTTPie
 alias https='http --default-scheme=https'
+
+# Python
+alias pip=pip3
+
+# Linode-CLI
+alias linodes=linode-cli linodes

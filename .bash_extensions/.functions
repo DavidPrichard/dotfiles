@@ -10,19 +10,33 @@ function update() {
 	brew upgrade --all;
 	brew cleanup;
 
-	# Ruby & gems
+	# Ruby/gems
 	sudo gem update —system;
 	sudo gem update;
 	sudo gem cleanup;
 
-	# npm
+	# Node/npm
 	npm install npm -g;
 	npm update -g;
+
+	# Python/pip
+	pip install --upgrade pip;
+
+	# Rust/rustup
+	rustup update;
 }
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+}
+
+function h() {
+	if [ $# -eq 0 ];
+		history
+	else
+		history | grep "$1"
+	fi;
 }
 
 # Create a .tar.gz archive, using zopfli, pigz or gzip for compression
@@ -98,11 +112,6 @@ function server() {
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
-}
-
-# Run `dig` and display the most useful info
-function digga() {
-	dig +nocmd "$1" any +multiline +noall +answer;
 }
 
 # whois a domain or a URL
@@ -199,7 +208,7 @@ function extract() {
 
 # who is using the laptop's iSight camera?
 camerausedby() {
-	echo "Checking to see who is using the iSight camera… 📷"
+	echo "Checking to see who is using the iSight camera…"
 	usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
 	echo -e "Recent camera uses:\n$usedby"
 }
@@ -280,5 +289,19 @@ function run() {
 		lein run "$@";
 	else
 		echo "Could not identify the project to be run.";
+	fi;
+}
+
+function bootstrap() {
+
+	if [[ $# -gt 0 ]]; then
+		ansible-playbook bootstrap.yml \
+		--ssh-extra-args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
+		-u root -k \
+		-e "hosts=$@";
+	else
+		ansible-playbook bootstrap.yml \
+		--ssh-extra-args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
+		-u root -k;
 	fi;
 }
