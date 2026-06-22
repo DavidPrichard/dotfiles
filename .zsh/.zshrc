@@ -1,18 +1,20 @@
-# add autocompletions for homebrew-installed utilities
-# this must come before compinit is loaded/initialized
+# HOMEBREW 
+
+# add autocompletions for brew-installed utilities
+# must come before compinit is loaded/initialized
 if type brew &>/dev/null; then
   chmod -R go-w "$(brew --prefix)/share"
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
 
-# no beeps
+# DON'T BEEP YO
 setopt NO_BEEP
 
-# comments in interactive shell
+# COMMENTS IN INTERACTIVE SHELL
 setopt INTERACTIVE_COMMENTS
 
-# completion / globbing
+# AUTO-COMPLETION / GLOBBING
 setopt COMPLETE_ALIASES # make aliases a distinct command for completion purposes
 
 # note: case_glob and no_case_glob did not work for me
@@ -22,7 +24,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}'
 # match even if leading '.' is omitted
 setopt GLOB_DOTS
 
-# auto-correction
+# AUTO-CORRECTION
 setopt CORRECT
 #setopt CORRECT_ALL
 
@@ -32,8 +34,8 @@ setopt CHASE_LINKS # resolve symlinks when cd'ing
 
 # HISTORY
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-SAVEHIST=5000
-HISTSIZE=2000
+SAVEHIST=20000
+HISTSIZE=8000
 setopt INC_APPEND_HISTORY # greedily append history from all sessions
 setopt HIST_IGNORE_DUPS # don't save duplicates
 setopt HIST_FIND_NO_DUPS # ignore dups when searching history
@@ -42,20 +44,22 @@ setopt HIST_IGNORE_SPACE # ignore commands that begin with a space
 
 # KEYBINDINGS
 # note: these are for MacOS
-# zkbd can be used for more cross-platform keybindings,
+# TODO: zkbd can be used for more cross-platform keybindings,
 # but I couldn't get it to work in the time available.
-# TODO
 
 # History Completion | up and down
 bindkey "\e[A" history-beginning-search-backward
 bindkey "\e[B" history-beginning-search-forward
 
 # Word Jump | ctrl+left and ctrl+right
-# note: must be freed from shortcuts on a fresh install!
+# note: these are defined as shortcuts on fresh MacOS install;
+# they must be unbound before the shell can bind them!
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 
 # Delete Previous Word | ctrl+del
+# NOTE: causes any use of del to remove entire word.
+# TODO
 #bindkey "^?" backward-delete-word
 
 
@@ -66,9 +70,13 @@ zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.cache"
 
 # EXTENSIONS
 source ${ZDOTDIR:-$HOME}/.extensions/.aliases
+source ${ZDOTDIR:-$HOME}/.extensions/.s_aliases
+source ${ZDOTDIR:-$HOME}/.extensions/.mac_aliases
 source ${ZDOTDIR:-$HOME}/.extensions/.functions
+source ${ZDOTDIR:-$HOME}/.extensions/.mac_functions
 source ${ZDOTDIR:-$HOME}/.extensions/.path
-#source ${ZDOTDIR:-$HOME}/.extensions/.ansible
+source ${ZDOTDIR:-$HOME}/.extensions/.directories
+source ${ZDOTDIR:-$HOME}/.extensions/.ansible
 
 # AUTOCOMPLETION / PROMPT
 
@@ -93,3 +101,8 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # note: must go at the end of the .zshrc
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ZSH BUILTIN BATCH-RENAMING COMMAND
+# Example usage: zmv -W '*.log '*.txt' to batch rename .log files to .txt files
+# Example dry run: use -n -W
+autoload zmv
