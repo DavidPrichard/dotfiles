@@ -4,33 +4,8 @@
 alias sudo='sudo '
 alias pls='sudo ' 
 
-# # Easier navigation: .., ..., ...., ....., ~ and -
-# alias ..="cd .."
-# alias ...="cd ../.."
-# alias ....="cd ../../.."
-# alias .....="cd ../../../.."
-# alias ~="cd ~"
-# alias -- -="cd -"
-
-# Correct common navigation typos
-alias cd.="cd ."
-
-# Shortcuts
-alias home="cd ~/"
-alias downloads="cd ~/Downloads"
-alias dls="cd ~/Downloads"
-alias desktop="cd ~/Desktop"
-alias desk="cd ~/Desktop"
-alias docs="cd ~/Documents"
-alias github="cd ~/GitHub"
-alias gh="cd ~/GitHub"
-alias ansible="cd ~/GitHub/Ansible-Playbooks"
-alias ans="cd ~/GitHub/Ansible-Playbooks"
-alias hosts="cd ~/GitHub/Ansible-Playbooks/hosts"
-
-# Dotfile Shortcuts
-alias .ssh="cd ~/.ssh/"
-alias .zsh="cd ~/.zsh"
+# Shortcut back to the home directory
+alias home='cd $HOME'
 
 # Precautions: warn & be verbose with (potentially) destructive file operations
 alias mv='mv -i -v'
@@ -40,47 +15,24 @@ alias ln='ln -i -v'
 alias chmod='gchmod --preserve-root'
 alias chown='gchown --preserve-root'
 
-# # system status checks
-# alias mounts='df -hT'
-# alias audit='lynis audit system'
+# Formatting output
+alias row='column -x'
+alias table='column -t'
+alias headers='column -t -s ":" -N' #accepts comma-separated list of column headers
 
-# # Python 2 -> 3
-# alias python='python3'
-# alias pip='pip3'
+# Python 2 -> 3
+alias python='python3'
+alias pip='pip3'
 
 # ls options: A = include hidden (but not . or ..), F = add `/` after folders, h = human-readable size
 alias ls='gls -AF --color=auto --group-directories-first'
-alias lsd='ls -lh | grep "^d"' # directories only
-alias recent='ls -lh --sort=time -r'
+alias eza='eza -a --group-directories-first'
+alias recent='eza --long --sort=modified'
+alias biggest='eza --long --sort=size -r'
 
 # Grep
 alias grep='grep --color=auto'
-# alias fgrep='fgrep --color=auto'
-# alias egrep='egrep --color=auto'
 alias hgrep='history | grep'
-
-# Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-# Recursively delete `.DS_Store` files
-alias clean-ds="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the Trash on all volumes, clear Apple's System logs, and clear quarantine download history.
-# Thanks: https://mths.be/bum
-alias cleanup="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-
-# Show/hide hidden files and desktop in Finder
-alias show_dots="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide_dots="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Show/hide all desktop icons (useful when presenting)
-alias show_desk="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-alias hide_desk="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-
-# macOS has no `md5sum` or `sha1sum`, so use `md5`/`shasum` as a fallback
-# Needs Update | for sha512/sha3/etc
-command -v md5sum > /dev/null || alias md5sum="md5"
-command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -90,36 +42,39 @@ alias map="xargs -n1"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# Stuff I never use, but cannot delete because of http://xkcd.com/530/
+# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias quiet="osascript -e 'set volume output muted true'"
 alias loud="osascript -e 'set volume output volume 100'"
 
-# IP addresses | Needs Updating
+# IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
 # Show active network interfaces
-# BROKEN
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+alias ifactive="ifconfig | egrep 'status: active' -7 | egrep '^en\d\d?:'"
 
 # View HTTP traffic
-alias sniffs="sudo ngrep -d 'en0' -qt -Wbyline '^(GET|POST) ' 'tcp and port 80'"
+alias sniff="sudo ngrep -d 'en0' -qt -Wbyline '^(GET|POST) ' 'tcp and port 80'"
 alias sniffdns="sudo ngrep -q -Wbyline '' port 53"
 
 # Git
-# Needs Update | more of these
+#alias git='hub'
 alias loc='cloc $(git ls-files)' # counts lines of code in current repo.
-alias ignored-rm='git ls-files --ignored --exclude-standard -z | xargs -0 git rm --cached' # removes file types that have been added to gitignore
-
 
 # HTTPie
 alias https='http --default-scheme=https'
 
 # yt-dlp
-alias ytx='yt-dlp -x'
-alias ytc='yt-dlp --cookies-from-browser chrome'
+alias ytx='yt-dlp -x' # audio only
+alias ytc='yt-dlp --cookies-from-browser chrome' # when signing in is required
 
-### S-ALIASES ###
+# Combine a directory of pictures into a single PDF
+# TODO: alias pic-to-pdf="magick -density 96 '*.{png,jpg,webp}' '.pdf'"
 
-# use to automatically open log files
-# alias -s .log="suffix alias here"
+# open YAMl with jless conveniently
+alias yless="jless --yaml"
+
+# mogrify to avif
+alias avify="fd -e png -e jpg -e jpeg --type file --threads 1 --exec mogrify -format avif '{}'"
+alias pdfy="fd . --type dir --max-depth 1 --threads 1 --exec magick '{/}/*.avif' '{/}.pdf'"
+alias avify_cleanup="fd -e png -e jpg -e jpeg --type file --exec rm '{}'"

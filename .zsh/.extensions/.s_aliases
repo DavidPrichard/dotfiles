@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+### Suffix Aliases ###
+
+# Print logs to terminal (truncated w tail)
+alias -s .log="tail -n 100"
+
+# Print to terminal
+alias -s .json="jless"
+alias -s {env,js,ts,html,css,md,yaml,toml}="bat"
+
+# Clone git files by their URL
+alias -s git="git clone"

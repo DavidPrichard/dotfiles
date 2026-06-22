@@ -16,7 +16,8 @@ export MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:$MANPATH"
 export PATH="opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export MANPATH="/opt/homebrew/opt/grep/libexec/gnuman:$MANPATH"
 
-# Place brewed (user/local/bin) stuff in PATH before system stuff. May cause problems!
+# Place homebrew-installed (user/local/bin) files in PATH before system stuff.
+# This causes their utilities to override natively installed utilities.
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 
 # Place cargo-installed binaries into PATH.

@@ -1,45 +1,7 @@
-#!/usr/bin/env bash
-
-# Change working directory to the top-most Finder window location
-function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
-}
-
-# Convenience function for grepping through history
-function h() {
-	if [ $# -eq 0 ];
-		history
-	else
-		history | grep "$1"
-	fi;
-}
-
-# Update all the things
-function update() {
-	# App Store apps
-	sudo softwareupdate -i -a;
-
-	# Homebrew (Cask) & packages
-	brew update;
-	brew upgrade --all;
-	brew autoremove;
-	brew cleanup;
-
-	# npm
-	npm install npm -g;
-	npm update -g;
-
-	# Rust/rustup
-	rustup update;
-
-	# Needs Update
-	# python | uv
-	#
-}
+#!/usr/bin/env zsh
 
 # Execute a script if given a file, otherwise treat the cd as a project root
 # and try to identify and build it.
-# NEEDS UPDATE | python | c#
 function build() {
 
 	if [[ $# -gt 0 ]]; then
@@ -60,6 +22,7 @@ function build() {
 
 # Execute a script if given a file, otherwise treat the cd as a project root
 # and try to identify and build it.
+#TODO - update
 function run() {
 
 	if [[ $# -gt 0 ]]; then
@@ -109,16 +72,8 @@ function datauri() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
-# Create a data URI from a file
-function datauri() {
-	local mimeType=$(file -b --mime-type "$1");
-	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8";
-	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
-}
 
-# Start a Python HTTP server in a directory, optionally specifying the port
+# Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}";
 	sleep 1 && open "http://localhost:${port}/" &
@@ -128,7 +83,7 @@ function server() {
 }
 
 # Run `dig` and display the most useful info
-function digdug() {
+function digga() {
 	dig +nocmd "$1" any +multiline +noall +answer;
 }
 
@@ -140,17 +95,6 @@ function whois() {
 	fi
 	echo "Getting whois record for: $domain …"
 	/usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
-}
-
-function localip(){
-	function _localip(){ echo "📶  "$(ipconfig getifaddr "$1"); }
-	export -f _localip
-	local purple="\x1B\[35m" reset="\x1B\[m"
-	networksetup -listallhardwareports | \
-		sed -r "s/Hardware Port: (.*)/${purple}\1${reset}/g" | \
-		sed -r "s/Device: (en.*)$/_localip \1/e" | \
-		sed -r "s/Ethernet Address:/📘 /g" | \
-		sed -r "s/(VLAN Configurations)|==*//g"
 }
 
 # Show all the names (CNs and SANs) listed in the SSL certificate
@@ -224,13 +168,6 @@ function extract() {
 	fi
 }
 
-# who is using the laptop's iSight camera?
-camerausedby() {
-	echo "Checking to see who is using the iSight camera… 📷"
-	usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
-	echo -e "Recent camera uses:\n$usedby"
-}
-
 # Open the file or, if given no arguments, the current dir.
 function open() {
 	if [ $# -eq 0 ]; then
@@ -239,4 +176,3 @@ function open() {
 		open "$@";
 	fi;
 }
-

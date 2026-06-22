@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+# Shortcuts, commands, etc. specific to a particular file organization
+
+# Named Directories
+# Example: use "~dwl" in a command and it will be replaced with "~/Downloads"
+# These can cause unintended expansion; mitigate by making them at least 3 characters long.
+# Use $HOME instead of ~, it does not expand reliably when the named directory is invoked.
+hash -d dwl="$HOME/Downloads"
+hash -d dsk="$HOME/Desktop"
+hash -d ghb="$HOME/GitHub"
+hash -d docs="$HOME/Documents"
+hash -d mus="$HOME/Music"
+hash -d fonts="$HOME/Fonts"

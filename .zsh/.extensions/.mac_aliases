@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+# MacOS-only aliases
+
+# Flush Directory Service cache
+alias flush-dns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# Recursively delete `.DS_Store` files
+alias clean-ds="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Show/hide hidden files in Finder
+alias show_all="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide_all="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Show/hide all desktop icons (useful when presenting)
+alias show_desktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hide_desktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+
+# macOS has no `md5sum` or `sha1sum`, so use `md5`/`shasum` as a fallback
+command -v md5sum > /dev/null || alias md5sum="md5"
+command -v sha1sum > /dev/null || alias sha1sum="shasum"
+
+# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+alias quiet="osascript -e 'set volume output muted true'"
+alias loud="osascript -e 'set volume output volume 100'"

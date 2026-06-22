@@ -1,0 +1,70 @@
+#!/usr/bin/env zsh
+
+# MacOS-specific functions
+
+# Change working directory to the top-most Finder window location
+function cdf() { # short for `cdfinder`
+	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+}
+
+# Update all the things
+function update() {
+	# App Store apps
+	sudo softwareupdate -i -a;
+
+	# Homebrew (Cask) & packages
+	brew update;
+	brew upgrade --all;
+	brew autoremove;
+	brew cleanup;
+
+	# npm
+	npm install npm -g;
+	npm update -g;
+}
+
+# Empty the Trash on all volumes, clear Apple's System logs, and clear quarantine download history.
+# Thanks: https://mths.be/bum
+function cleanup() {
+	rm -rfv /Volumes/*/.Trashes;
+	rm -rfv ~/.Trash;
+	rm -rfv /private/var/log/asl/*.asl;
+	sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent';
+}
+
+
+# Returns the name (aka "SSID") of the current wifi network
+wifi_name () {
+	networksetup -getairportnetwork en0 | awk -F': ' '{print $2}';
+}
+
+# Returns the password of the current wifi network
+wifi_pass () {
+	local n=$(wifi_name);
+	security find-generic-password -D 'AirPort network password' -wa $n;
+}
+
+# Generate QR code for easily sharing wifi details to phones
+# Requires sudo due to invoking wdutil
+# Thanks to: https://apple.stackexchange.com/a/461284
+wifi_qr () {
+	local wifi_sec=$(wdutil info | grep security | awk -F': ' '{print $2}');
+
+	# Adjust the security type for the QR code
+	case "$wifi_sec" in
+		"WPA3 Personal") wifi_sec="WPA";;
+		"WPA2 Personal") wifi_sec="WPA";;
+		"WEP") wifi_sec="WEP";;
+		"None") wifi_sec="nopass";;
+		*) wifi_sec="WPA";;
+	esac
+
+	qrencode -t ANSIUTF8 "WIFI:T:$wifi_sec;S:$wifi_name;P:$wifi_pass;;"
+}
+
+# who is using the laptop's iSight camera?
+camerausedby() {
+	echo "Checking to see who is using the iSight camera… 📷"
+	usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
+	echo -e "Recent camera uses:\n$usedby"
+}
