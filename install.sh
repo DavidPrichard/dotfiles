@@ -35,7 +35,7 @@ brew tap caskroom/versions
 
 brew upgrade --all
 
-echo "Chaning usr/local permissions for Ruby etc."
+echo "Changing usr/local permissions for Ruby etc."
 sudo chown -R $(whoami):admin /usr/local
 
 ################### Shell/GNU Utilites ###################
@@ -53,16 +53,9 @@ brew install whois
 brew install openssl
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-# Install newest version of bash & completions
-echo "Installing up-to-date version of bash."
-brew install bash
-brew install bash-completion
-
-# Switch default shell to brew-installed bash
-if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/bash;
-fi;
+# Install zsh plugins
+echo "Installing zsh plugins."
+brew install zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 
 ################### Git ###################
 
@@ -70,53 +63,35 @@ echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install bfg cloc hub # hub is aliased as git by .aliases
+brew install bfg hub # hub is aliased as git by .aliases
 brew cask install github-desktop
 
 ################### Languages and Package Mangers ###################
 
 echo "Installing Programming Languages and Package Managers"
 
+brew install python go npm
+
 brew install ruby # yes, despite being installed for Homebrew itself.
 gem install bundler
 
-brew install python3
-pip3 install virtualenv
+curl https://sh.rustup.rs -sSf | sh -s -- -y # install rustup
 
-brew install go
+################### Ansible ###################
 
-brew cask install racket
-
-brew install rust
-
-brew cask install java visualvm jprofiler
-brew install scala sbt wartremover ammonite-repl
-brew install leiningen # clojure
-
-brew install ghc cabal-install haskell-stack
-
-brew install elm
-brew install npm
-
-################### Web Frameworks ###################
-
-sudo gem install jekyll
-pip3     install django
-pip3     install flask
-raco pkg install pollen
-stack    install hakyll
+brew install rsync libyaml # ansible deps
+pip3 install setuptools wheel dnspython # ansible deps
+pip3 install ansible-core
+pip3 install "ansible-lint[core,yamllint]"
 
 ################### Other Utilities ###################
-
-# File Tools
-brew install tree # prints out directory structure.
 
 # Backup Tools
 pip3 install --upgrade b2
 
 # Font Tools
 brew tap bramstein/webfonttools
-brew install woff2 ots fonttools #sfntly if they update to a maintained fork
+brew install woff2 ots fonttools #sfntly if brew updates to maintained fork
 
 # Image Tools
 brew install imagemagick optipng
@@ -127,10 +102,9 @@ brew install qrencode
 
 # Pass Generation and Management
 pip3 install diceware
-brew install pass && echo "source /usr/local/etc/bash_completion.d/password-store" >> ~/.bashrc
 
 # Compression/Decompression
-brew install p7zip brotli zopfli
+brew install p7zip brotli
 
 # Forensics & Data Recovery
 brew install exiftool # Exif Inspection/Alteration
@@ -140,12 +114,8 @@ brew install ddrescue # copy entire partition w/ damage
 brew install testdisk # filesystem repair
 
 # Networking
-brew install netcat # general-purpose networking
 brew install nmap   # port-scanner
-brew install ngrep  # network packet search
-
 brew install httpie # http requests, etc.
-go get -u github.com/davidprichard/httpstat # website latency
 
 #w3af # web vuln. scanner
 brew install skipfish
@@ -164,25 +134,21 @@ brew install figlet
 brew cask install iterm2
 
 # Quicklook plugins
-brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode
+
+# most of these no longer work due to being unsigned binaries
+#brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode
 
 # Text-Editors
-brew install vim --with-override-system-vi
-brew cask install sublime-text
-brew cask install atom
 brew cask install visual-studio-code
-brew cask install emacs
 
 # Browsers
 brew cask install google-chrome firefox
-brew cask install caskroom/versions/firefoxdeveloperedition
-brew cask install caskroom/versions/safari-technology-preview
 
 # Backup
-brew cask install crashplan
+#brew cask install backblaze
 
 # Communication
-brew cask install skype slack
+brew cask install discord
 
 # VMs
 brew cask install virtualbox
@@ -190,27 +156,12 @@ brew cask install virtualbox
 # Media Playback
 brew cask install vlc
 
-# SFTP Client
-brew cask install cyberduck
-
 # Security
 brew cask install owasp-zap # basic web vuln. scanning
-
-# Music Creation
-brew cask install sonic-pi
 
 # Others
 brew cask install flux
 brew cask install spectacle
-
-################### Atom Plugins ###################
-
-#apm install language-scala
-#apm install hydrogen # evaluation
-#apm install ensime # buggy
-
-#apm install language-rust
-#apm install linter-rust
 
 ################### App Store ###################
 brew install mas
@@ -224,7 +175,7 @@ mas install 777874532  # Cinemagraph Pro
 
 ################### Finish ###################
 
-# Remove outdated versions from the cellar.
+brew autoremove
 brew cleanup
 
 echo "Complete."
