@@ -29,33 +29,37 @@ fi
 
 echo "Installing Homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/davidprichard/.zprofile
+#eval "$(/opt/homebrew/bin/brew shellenv)"
+
 brew update
-brew tap homebrew/services
-brew tap caskroom/versions
+brew upgrade
 
-brew upgrade --all
-
-echo "Changing usr/local permissions for Ruby etc."
-sudo chown -R $(whoami):admin /usr/local
 
 ################### Shell/GNU Utilites ###################
 
 echo "Installing up-to-date core utilities"
 brew install coreutils moreutils findutils
-brew install gnu-sed --with-default-names
+brew install gnu-sed ack
 brew install wget --with-iri
-brew install ack
 brew install pv rename
 brew install grep
-brew install openssh
+brew install openssh openssl
 brew install screen
 brew install whois
-brew install openssl
-ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
+#################### ZSH #####################
+
+# ZSH itself installed by default with MacOS
 
 # Install zsh plugins
-echo "Installing zsh plugins."
-brew install zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+brew install zsh-completions zsh-autosuggestions zsh-syntax-highlighting
+
+# Force rebuild zcompdump
+rm -f ~/.zcompdump; compinit
+
+# Use Starship for custom prompt
+brew install starship
 
 ################### Git ###################
 
@@ -63,105 +67,103 @@ echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install bfg hub # hub is aliased as git by .aliases
+brew install bfg cloc hub # hub is aliased as git by .aliases
 brew cask install github-desktop
 
 ################### Languages and Package Mangers ###################
 
 echo "Installing Programming Languages and Package Managers"
 
-brew install python go npm
-
-brew install ruby # yes, despite being installed for Homebrew itself.
-gem install bundler
-
-curl https://sh.rustup.rs -sSf | sh -s -- -y # install rustup
+brew install python3 go rustup npm
+pip3 install virtualenv
 
 ################### Ansible ###################
 
-brew install rsync libyaml # ansible deps
-pip3 install setuptools wheel dnspython # ansible deps
-pip3 install ansible-core
-pip3 install "ansible-lint[core,yamllint]"
+pip3 install ansible
 
 ################### Other Utilities ###################
 
-# Backup Tools
-pip3 install --upgrade b2
+# File Tools
+brew install tree # prints out directory structure.
 
 # Font Tools
 brew tap bramstein/webfonttools
-brew install woff2 ots fonttools #sfntly if brew updates to maintained fork
+brew install woff2 ots fonttools #sfntly if they update to a maintained fork
 
 # Image Tools
 brew install imagemagick optipng
-go get -u github.com/fogleman/primitive
 
 # QR Generation
 brew install qrencode
 
 # Pass Generation and Management
 pip3 install diceware
+#brew install pass && echo "source /usr/local/etc/bash_completion.d/password-store" >> ~/.bashrc
 
 # Compression/Decompression
-brew install p7zip brotli
+#brew install p7zip brotli zopfli
 
 # Forensics & Data Recovery
 brew install exiftool # Exif Inspection/Alteration
-brew install autopsy  # Sleuth Kit GUI Version
-brew install foremost # file recovery
-brew install ddrescue # copy entire partition w/ damage
-brew install testdisk # filesystem repair
+#brew install autopsy  # Sleuth Kit GUI Version
+#brew install foremost # file recovery
+#brew install ddrescue # copy entire partition w/ damage
+#brew install testdisk # filesystem repair
 
 # Networking
+brew install netcat # general-purpose networking
 brew install nmap   # port-scanner
+brew install ngrep  # network packet search
+
 brew install httpie # http requests, etc.
+go get -u github.com/davidprichard/httpstat # website latency
 
 #w3af # web vuln. scanner
-brew install skipfish
-brew install sqlmap
+#brew install skipfish
+#brew install sqlmap
 
 brew install wifi-password # "what's the wifi-password?"
 npm install -g iponmap     # shows location of an IP address
 
 # Misc/Fun
-brew install dark-mode
-brew install figlet
+brew install figlet cowsay
 
 ################### Applications ###################
 
 # iTerm
-brew cask install iterm2
+brew install --cask iterm2
 
 # Quicklook plugins
-
-# most of these no longer work due to being unsigned binaries
 #brew cask install suspicious-package quicklook-json quicklook-csv qlmarkdown qlstephen qlcolorcode
 
 # Text-Editors
-brew cask install visual-studio-code
+#brew install vim --with-override-system-vi
+#brew cask install sublime-text
+brew install --cask visual-studio-code
+brew install --cask emacs
 
 # Browsers
-brew cask install google-chrome firefox
+brew install --cask google-chrome firefox
 
 # Backup
-#brew cask install backblaze
+brew install --cask backblaze
 
 # Communication
-brew cask install discord
-
-# VMs
-brew cask install virtualbox
+brew install --cask discord
 
 # Media Playback
-brew cask install vlc
+brew install --cask vlc
+
+# SFTP Client
+brew install --cask cyberduck
 
 # Security
-brew cask install owasp-zap # basic web vuln. scanning
+brew install --cask owasp-zap # basic web vuln. scanning
 
 # Others
-brew cask install flux
-brew cask install spectacle
+brew install --cask flux
+$brew install --cask rectangle
+brew install yt-dlp ffmpeg
 
 ################### App Store ###################
 brew install mas
@@ -172,10 +174,12 @@ mas signin $apple_id
 
 mas install 1175103038 # Primitive
 mas install 777874532  # Cinemagraph Pro
+# Magnet
 
 ################### Finish ###################
 
-brew autoremove
+# Remove outdated versions and unneeded dependencies
 brew cleanup
+brew autoremove
 
 echo "Complete."
