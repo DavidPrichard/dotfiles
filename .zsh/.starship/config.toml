@@ -29,7 +29,9 @@ $character"""
 
 add_newline = true
 
+continuation_prompt = "[⟫⟫](#618700) "
 
+#TODO: Transient prompt (https://github.com/starship/starship/issues/888)
 
 ###### Modules ######
 
