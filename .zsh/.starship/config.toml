@@ -1,0 +1,71 @@
+###### Global ######
+
+format = """
+$username\
+$hostname\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$docker_context\
+$package\
+$golang\
+$java\
+$php\
+$python\
+$rust\
+$memory_usage\
+$env_var\
+$custom\
+$cmd_duration\
+$line_break\
+$jobs\
+$time\
+$status\
+$shell\
+$character"""
+
+add_newline = true
+
+
+
+###### Modules ######
+
+[character]
+success_symbol = "[⟫](bold #618700)"
+
+[username]
+style_root = "bold red"
+style_user = "bold #d85f01"
+
+[hostname]
+ssh_only = true
+#prefix = "at "
+# suffix = "⟫"
+trim_at = "."
+style="bold #b01600"
+
+[directory]
+truncation_length = 4
+truncate_to_repo = true
+truncation_symbol = "../"
+#prefix = "in "
+style = "bold #618700"
+
+[git_branch]
+symbol = ""
+
+[nodejs]
+disabled = true
+
+[package]
+symbol = ""
+
+[python]
+symbol = ""
+python_binary = "python3"
+
+[rust]
+symbol = ""

@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# Load homebrewed GNU coreutils into PATH (and their manpages)
+export PATH="opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+
+# findutils
+export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
+export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:$MANPATH"
+
+# gnu-sed
+export PATH="opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:$MANPATH"
+
+# grep
+export PATH="opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export MANPATH="/opt/homebrew/opt/grep/libexec/gnuman:$MANPATH"
+
+# Place brewed (user/local/bin) stuff in PATH before system stuff. May cause problems!
+export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+
+# Place cargo-installed binaries into PATH.
+export PATH="$HOME/.cargo/bin:$PATH"; # Add cargo's installed binaries
