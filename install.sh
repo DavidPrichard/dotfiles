@@ -35,7 +35,6 @@ echo "Installing Homebrew"
 brew update
 brew upgrade
 
-
 ################### Shell/GNU Utilites ###################
 
 echo "Installing up-to-date core utilities"
@@ -47,6 +46,16 @@ brew install grep
 brew install openssh openssl
 brew install screen
 brew install whois
+
+# Rust Utilities
+
+brew install ripgrep # better grep
+brew install eza # better ls
+brew install fd # better find
+brew install tlrc # better tldr
+brew install diskus # better du -sh
+brew install hyperfine # easy cli benchmarking
+brew install zoxide # better cd
 
 #################### ZSH #####################
 
@@ -67,31 +76,49 @@ echo "Installing the latest version of Git"
 brew install git
 
 echo "Installing Git utilities"
-brew install bfg cloc hub # hub is aliased as git by .aliases
+brew install bfg cloc git-lfs
+brew install hub # ghub is aliased as git by .aliases
 brew cask install github-desktop
 
 ################### Languages and Package Mangers ###################
 
 echo "Installing Programming Languages and Package Managers"
 
-brew install python3 go rustup npm
-pip3 install virtualenv
+brew install python go rustup npm
+brew install uv
 
 ################### Ansible ###################
 
 pip3 install ansible
 
+################### Virtualization and Emulation ###################
+
+brew install qemu
+brew install podman
+
+
 ################### Other Utilities ###################
 
 # File Tools
+brew install rsync # heavy-duty file transfer
+
 brew install tree # prints out directory structure.
 
 # Font Tools
 brew tap bramstein/webfonttools
-brew install woff2 ots fonttools #sfntly if they update to a maintained fork
+brew install woff2 otf2 fonttools #sfntly if they update to a maintained fork
 
 # Image Tools
-brew install imagemagick optipng
+brew install imagemagick # image manipulation
+brew install pastel # color utility
+
+brew install ffmpeg # encoding/decoding video
+
+# Binary/hex Data viewers
+brew install binocle # view binary data
+brew install hexyl # view hexadecimal data
+brew install jless # like yless for json
+brew install jq # basically sed for json 
 
 # QR Generation
 brew install qrencode
@@ -101,7 +128,8 @@ pip3 install diceware
 #brew install pass && echo "source /usr/local/etc/bash_completion.d/password-store" >> ~/.bashrc
 
 # Compression/Decompression
-#brew install p7zip brotli zopfli
+brew install zstd
+#brew install p7zip brotli zopfli gnu-tar
 
 # Forensics & Data Recovery
 brew install exiftool # Exif Inspection/Alteration
@@ -159,14 +187,13 @@ brew install --cask cyberduck
 
 # Security
 brew install --cask owasp-zap # basic web vuln. scanning
+brew install wpscan # wordpress vuln. scanning
 
 # Others
 brew install --cask flux
-$brew install --cask rectangle
-brew install yt-dlp ffmpeg
 
 ################### App Store ###################
-brew install mas
+brew install mas # utility for the App Store
 
 echo "Enter your Apple ID (email) to install App Store programs."
 read apple_id
@@ -178,7 +205,7 @@ mas install 441258766 # Magnet
 ################### Finish ###################
 
 # Remove outdated versions and unneeded dependencies
-brew cleanup
 brew autoremove
+brew cleanup
 
 echo "Complete."
