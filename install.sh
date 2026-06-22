@@ -172,9 +172,8 @@ echo "Enter your Apple ID (email) to install App Store programs."
 read apple_id
 mas signin $apple_id
 
-mas install 1175103038 # Primitive
-mas install 777874532  # Cinemagraph Pro
-# Magnet
+mas install 777874532 # Cinemagraph Pro
+mas install 441258766 # Magnet
 
 ################### Finish ###################
 
